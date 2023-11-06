@@ -9,11 +9,21 @@ namespace Entity.Concrete
 {
     public class Car : IEntitiy
     {
-        public int Id;
-        public int BrandId;
-        public int ColorId;
-        public int ModelYear;
-        public decimal DailyPrice;
-        public string Description;
+        public int Id{
+            get;
+            set;
+        }
+        public int BrandId {
+            get;
+            set;
+        }
+
+
+        public int ColorId { get; set; }
+
+        public int ModelYear { get; set; }
+        public decimal DailyPrice { get; set; }
+        public string Description { get; set; }
+
     }
 }
