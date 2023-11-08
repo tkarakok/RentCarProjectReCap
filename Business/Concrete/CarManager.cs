@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entity.Concrete;
@@ -40,7 +41,7 @@ namespace Business.Concrete
         {
             /// false ise error result çağrılır
             _iCarDal.Add(car);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CarAdded);
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
