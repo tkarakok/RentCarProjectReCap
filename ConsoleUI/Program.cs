@@ -13,12 +13,12 @@ CarTest();
 
 void CarTest()
 {
-    CarManager carManager = new CarManager(new EfCarDal());
+    //CarManager carManager = new CarManager(new EfCarDal());
 
 
-    foreach (var car in carManager.GetCarDetails())
-    {
-        Console.WriteLine(car.BrandName + "/ " + car.ColorName);
-    }
+    //foreach (var car in carManager.GetCarDetails())
+    //{
+    //    Console.WriteLine(car.BrandName + "/ " + car.ColorName);
+    //}
 }
 
