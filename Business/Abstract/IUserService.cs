@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Core.DataAccess;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using Entity.Concrete;
 
-namespace DataAccess.Abstract
+namespace Business.Abstract
 {
-    public interface IUserDal : IEntityRepository<User>
+    public interface IUserService
     {
-        List<OperationClaim> GetClaims(User user);
+        IDataResult<List<OperationClaim>> GetClaims(User user);
+        IResult Add(User user);
+        IDataResult<User> GetByMail(string mail);
     }
 }
