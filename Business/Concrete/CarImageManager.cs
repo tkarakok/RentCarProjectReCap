@@ -47,8 +47,17 @@ namespace Business.Concrete
 
         public IResult Add(IFormFile file, CarImage carImage)
         {
+
+            IResult result = BusinessRules.Run(CheckForCarImageLimit(carImage.CarId));
+
+            if (result != null)
+            {
+                return result;
+            }
+
             carImage.ImagePath = _iFileHelperService.Upload(file, PathConstants.CarImagesPath);
             carImage.Date = DateTime.Now;
+            _carImageDal.Add(carImage);
             return new SuccessResult(Messages.ImageAdded);
         }
 
@@ -75,7 +84,7 @@ namespace Business.Concrete
         private IResult CheckForCarImageLimit(int carId)
         {
             var result = _carImageDal.GetAll(car => car.CarId == carId).Count;
-            if (result > 5)
+            if (result >= 5)
             {
                 return new ErrorResult(Messages.CarImageLimitReached);
             }
@@ -87,7 +96,7 @@ namespace Business.Concrete
         {
             List<CarImage> carImages = new List<CarImage>();
 
-            CarImage carImage = new CarImage{CarId = carId, Date = DateTime.Now, ImagePath = "DefaultImage.jpg"};
+            CarImage carImage = new CarImage{CarId = carId, Date = DateTime.Now, ImagePath = "88c9f3357073.png" };
             for (int i = 0; i < 5; i++)
             {
                 carImages.Add(carImage);    
